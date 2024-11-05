@@ -133,10 +133,10 @@ __azurite_db*__.json
 .vscode/
 
 # Terraform files
-infra/.terraform/
-infra/terraform.tfstate
-infra/terraform.tfstate.backup
-infra/.terraform.lock.hcl
+*.terraform/
+*terraform.tfstate
+*terraform.tfstate.backup
+*.terraform.lock.hcl
 
 # System files
 .DS_Store
