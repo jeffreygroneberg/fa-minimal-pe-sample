@@ -218,6 +218,15 @@ resource "azurerm_linux_function_app" "fa" {
 
   site_config {
 
+    ip_restriction {
+
+      name       = "AllowClientIP"
+      ip_address = "${var.client_ip}/32"
+      action     = "Allow"
+      priority   = 100
+
+    }
+
     vnet_route_all_enabled                 = true
     application_insights_connection_string = azurerm_application_insights.fa-appinsights.connection_string
     application_insights_key               = azurerm_application_insights.fa-appinsights.instrumentation_key
