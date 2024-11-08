@@ -137,27 +137,6 @@ resource "azurerm_private_endpoint" "storage_pe_queue" {
   }
 }
 
-# Private Endpoint for Azure Function
-resource "azurerm_private_endpoint" "function_pe" {
-  name                = "pe-${var.workload_name}-${var.environment}-function"
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
-  subnet_id           = azurerm_subnet.subnet-pe.id
-
-  private_service_connection {
-    name                           = "function-connection"
-    private_connection_resource_id = azurerm_linux_function_app.fa.id
-    subresource_names              = ["sites"]
-    is_manual_connection           = false
-  }
-
-  private_dns_zone_group {
-    name                 = azurerm_private_dns_zone_virtual_network_link.gw_dns_link.name
-    private_dns_zone_ids = [azurerm_private_dns_zone.gw_dns_zone.id]
-  }
-
-}
-
 # Private DNS Zone for Blob Storage
 resource "azurerm_private_dns_zone" "blob_dns_zone" {
   name                = "privatelink.blob.core.windows.net"
