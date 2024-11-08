@@ -137,6 +137,9 @@ __azurite_db*__.json
 *terraform.tfstate
 *terraform.tfstate.backup
 *.terraform.lock.hcl
-
+*.tfvars
 # System files
 .DS_Store
+
+# Python Zip file
+*.zip
